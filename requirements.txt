@@ -5,3 +5,4 @@ transformers
 tenacity
 pandas
 scikit-learn
+spacy
