@@ -6,3 +6,4 @@ tenacity
 pandas
 scikit-learn
 spacy
+spacytextblob
