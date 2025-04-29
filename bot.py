@@ -16,12 +16,6 @@ from generate import generate
 import numpy as np
 from polariser import *
 from emotion_model import detect_emotion
-try:
-    nlp = spacy.load('en_core_web_sm')
-except OSError:
-    from spacy.cli import download
-    download('en_core_web_sm')
-    nlp = spacy.load('en_core_web_sm')
 import spacy
 
 
