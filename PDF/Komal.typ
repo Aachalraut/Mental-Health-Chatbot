@@ -1,11 +1,11 @@
 /// ========== Variables ==========
 
-#let name = "Aachal"
-#let username = "Aachal"
+#let name = "Komal"
+#let username = "Komal"
 #let stats = (
-  Anxiety: 25.00,
-  Normal: 50.00,
-  Depression: 25.00,
+  Anxiety: 0.00,
+  Normal: 0.00,
+  Depression: 100.00,
   Suicidal: 0.00,
   Stress: 0.00,
 )

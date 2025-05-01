@@ -1,6 +1,7 @@
 import asyncio
 import os
 from telegram import Update
+from telegram.ext import ContextTypes
 from telegram.ext import Application, CommandHandler, MessageHandler, filters
 from tenacity import retry, stop_after_attempt, wait_fixed
 from responses import *
@@ -85,9 +86,9 @@ async def report(update: Update, context):
 
 
 
-async def echo(update: Update, context):
+async def echo(update: Update, context: ContextTypes.DEFAULT_TYPE):
     user = update.message.from_user
-    user_id = str(user.id)
+    user_id = str(update.effective_user.id)
     user_input = update.message.text
     
     if user_input.lower() in "hello hi hey what's up? howdy  greetings welcome hiya yo  to see you how's it going? nice to meet you":
@@ -116,6 +117,11 @@ async def echo(update: Update, context):
     else:
         response = get_response(sentiment)  # Fallback to basic polarity-based response
 
+    if user_id not in context.user_data:
+        context.user_data[user_id] = {"values": 0}  # or [] if you are storing a list
+
+    # Now safe to use
+    context.user_data[user_id]["values"] += category_probabilities[0]
     # Update session data
     context.user_data[user_id]["values"] += category_probabilities[0]
     context.user_data[user_id]["length"] += 1
