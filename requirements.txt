@@ -7,3 +7,5 @@ pandas
 scikit-learn
 spacy
 spacytextblob
+spacy==3.x
+nltk==3.x

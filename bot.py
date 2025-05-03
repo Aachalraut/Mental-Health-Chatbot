@@ -15,6 +15,24 @@ from sklearn.naive_bayes import MultinomialNB
 from sklearn.metrics import accuracy_score
 from generate import generate
 import numpy as np
+import spacy
+import subprocess
+import sys
+# Ensure the model is installed
+def install_spacy_model():
+    try:
+        # Try to load the model
+        spacy.load('en_core_web_sm')
+    except IOError:
+        # If the model is not found, download and install it
+        subprocess.check_call([sys.executable, "-m", "spacy", "download", "en_core_web_sm"])
+
+# Call the function to ensure the model is available
+install_spacy_model()
+
+# Now you can load the model and continue with the rest of your bot logic
+nlp = spacy.load('en_core_web_sm')
+
 from polariser import *
 from emotion_model import detect_emotion
 
